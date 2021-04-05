@@ -8,16 +8,28 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.puspawahyuningtias.githubuser.data.model.User
 import com.puspawahyuningtias.githubuser.databinding.ItemUserBinding
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.UserViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.UserViewHolder>() {
     private var list = ArrayList<User>()
 
-    fun setList(users: ArrayList<User>){
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    fun setList(users: ArrayList<User>) {
         list.clear()
         list.addAll(users)
         notifyDataSetChanged()
     }
-    inner class UserViewHolder(val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(user: User){
+
+    inner class UserViewHolder(val binding: ItemUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(user: User) {
+            binding.root.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
+            
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatar_url)
@@ -38,5 +50,9 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.UserViewHolder>() {
         holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int =list.size
+    override fun getItemCount(): Int = list.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
+    }
 }
