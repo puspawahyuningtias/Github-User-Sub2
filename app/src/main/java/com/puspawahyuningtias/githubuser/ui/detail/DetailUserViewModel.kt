@@ -13,7 +13,7 @@ import retrofit2.Response
 class DetailUserViewModel : ViewModel(){
     val user = MutableLiveData<DetailUserResponse>()
 
-    fun setUSerDetail(username:String){
+    fun setUSerDetail(username: String){
         RetrofitClient.apiInstance
             .getUserDetail(username)
             .enqueue(object : Callback<DetailUserResponse>{
