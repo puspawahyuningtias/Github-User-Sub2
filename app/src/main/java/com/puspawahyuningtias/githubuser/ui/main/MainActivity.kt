@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
@@ -67,14 +66,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
-
-//            etQuery.setOnKeyListener { v, keyCode, event ->
-//                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-//                    searchUser()
-//                    return@setOnKeyListener (true)
-//                }
-//                return@setOnKeyListener false
-//            }
         }
         viewModel.getSearchUsers().observe(this,{
             if(it!=null){
@@ -94,14 +85,6 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-//    private fun searchUser(){
-//        binding.apply {
-//            val query = etQuery.text.toString()
-//            if (query.isEmpty()) return
-//            showLoading(true)
-//            viewModel.setSearchUsers(query)
-//        }
-//    }
     private fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = VISIBLE

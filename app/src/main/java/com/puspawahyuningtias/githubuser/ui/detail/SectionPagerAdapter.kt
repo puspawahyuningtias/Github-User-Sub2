@@ -11,10 +11,8 @@ import com.puspawahyuningtias.githubuser.R
 class SectionPagerAdapter(private val mCtx: Context, fm: FragmentManager, data: Bundle) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private var fragmentBundle: Bundle
-    init{
-        fragmentBundle = data
-    }
+    private var fragmentBundle: Bundle = data
+
     @StringRes
     private val TAB_TITLES = intArrayOf(R.string.followers, R.string.following)
 

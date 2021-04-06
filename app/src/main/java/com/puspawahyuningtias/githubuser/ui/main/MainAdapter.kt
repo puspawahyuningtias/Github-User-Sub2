@@ -23,7 +23,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(val binding: ItemUserBinding) :
+    inner class UserViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.root.setOnClickListener {
