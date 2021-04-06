@@ -2,13 +2,17 @@ package com.puspawahyuningtias.githubuser.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
+import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.puspawahyuningtias.githubuser.R
 import com.puspawahyuningtias.githubuser.data.model.User
 import com.puspawahyuningtias.githubuser.databinding.ActivityMainBinding
 import com.puspawahyuningtias.githubuser.ui.detail.DetailUserActivity
@@ -52,10 +56,9 @@ class MainActivity : AppCompatActivity() {
                     if (query.isEmpty()) {
                         return true
                     } else {
+                        viewModel.setSearchUsers(query)
                         showLoading(true)
                         searchText.visibility = GONE
-                        viewModel.setSearchUsers(query)
-                        etQuery.clearFocus()
                     }
                     return true
                 }
@@ -80,7 +83,17 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_change_settings) {
+            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(mIntent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 //    private fun searchUser(){
 //        binding.apply {
 //            val query = etQuery.text.toString()
@@ -91,9 +104,9 @@ class MainActivity : AppCompatActivity() {
 //    }
     private fun showLoading(state: Boolean) {
         if (state) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.visibility = VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.progressBar.visibility = GONE
         }
     }
 }

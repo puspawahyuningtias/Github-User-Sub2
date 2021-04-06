@@ -3,14 +3,12 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
 
-    <string name="tab_1">Followers</string>
-    <string name="tab_2">Following</string>
-    <string name="not_found">Pegguna Tidak Ditemukan</string>
-    <string name="github_user">Github\nUser</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+    <string name="github_user">Github\nUser</string>
     <string name="search_hint">Please input Username</string>
     <string name="hint_text">Search</string>
+    <string name="change_language_settings">Change Language Settings</string>
 
 
 </resources>

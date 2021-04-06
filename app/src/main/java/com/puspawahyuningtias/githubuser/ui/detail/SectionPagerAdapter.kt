@@ -16,7 +16,7 @@ class SectionPagerAdapter(private val mCtx: Context, fm: FragmentManager, data: 
         fragmentBundle = data
     }
     @StringRes
-    private val TAB_TITLES = intArrayOf(R.string.tab_1, R.string.tab_2)
+    private val TAB_TITLES = intArrayOf(R.string.followers, R.string.following)
 
 
     override fun getCount(): Int = 2
@@ -31,7 +31,7 @@ class SectionPagerAdapter(private val mCtx: Context, fm: FragmentManager, data: 
         return fragment as Fragment
     }
 
-    override fun getPageTitle(position: Int): CharSequence?{
+    override fun getPageTitle(position: Int): CharSequence {
         return mCtx.getString(TAB_TITLES[position])
     }
 }
