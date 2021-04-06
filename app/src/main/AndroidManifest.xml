@@ -12,11 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser">
         <activity android:name=".ui.detail.DetailUserActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.splash.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="com.puspawahyuningtias.githubuser.MAINACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
