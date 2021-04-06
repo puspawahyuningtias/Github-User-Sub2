@@ -35,8 +35,8 @@ class DetailUserActivity : AppCompatActivity() {
             if (it !=null){
                 binding.apply {
                     tvName.text = it.name
-                    tvFollowers.text = "${it.followers}\nFollowers"
-                    tvFollowing.text = "${it.following}\nFollowing"
+                    tvFollowers.text = it.followers.toString()
+                    tvFollowing.text = it.following.toString()
                     tvLocation.text = it.location
                     tvCompany.text = it.company
                     Glide.with(this@DetailUserActivity)

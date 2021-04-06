@@ -7,5 +7,10 @@
     <string name="tab_2">Following</string>
     <string name="not_found">Pegguna Tidak Ditemukan</string>
     <string name="github_user">Github\nUser</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="search_hint">Please input Username</string>
+    <string name="hint_text">Search</string>
+
 
 </resources>

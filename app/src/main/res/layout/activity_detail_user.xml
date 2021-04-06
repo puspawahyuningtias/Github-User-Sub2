@@ -39,28 +39,50 @@
         app:layout_constraintStart_toStartOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_name">
 
-        <TextView
-            android:id="@+id/tv_followers"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:ignore="RtlCompat"
-            tools:text="9\nfollowers" />
-
-        <TextView
-            android:id="@+id/tv_following"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp">
+            <TextView
+                android:id="@+id/tv_followers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="14sp"
+                tools:ignore="RtlCompat"
+                tools:text="0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="RtlCompat"
+                android:text="@string/followers" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:ignore="RtlCompat"
-            tools:text="9\nfollowing" />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_following"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="14sp"
+                tools:ignore="RtlCompat"
+                tools:text="0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="RtlCompat"
+                android:text="@string/following" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
