@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,13 +46,30 @@ class MainActivity : AppCompatActivity() {
             rvUser.setHasFixedSize(true)
             rvUser.adapter = adapter
 
-            etQuery.setOnKeyListener { v, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    searchUser()
-                    return@setOnKeyListener (true)
+            etQuery.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    if (query.isEmpty()) {
+                        return true
+                    } else {
+                        showLoading(true)
+                        viewModel.setSearchUsers(query)
+                        etQuery.clearFocus()
+                    }
+                    return true
                 }
-                return@setOnKeyListener false
-            }
+                override fun onQueryTextChange(newText: String): Boolean {
+                    return false
+                }
+
+            })
+
+//            etQuery.setOnKeyListener { v, keyCode, event ->
+//                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+//                    searchUser()
+//                    return@setOnKeyListener (true)
+//                }
+//                return@setOnKeyListener false
+//            }
         }
         viewModel.getSearchUsers().observe(this,{
             if(it!=null){
@@ -61,14 +79,14 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun searchUser(){
-        binding.apply {
-            val query = etQuery.text.toString()
-            if (query.isEmpty()) return
-            showLoading(true)
-            viewModel.setSearchUsers(query)
-        }
-    }
+//    private fun searchUser(){
+//        binding.apply {
+//            val query = etQuery.text.toString()
+//            if (query.isEmpty()) return
+//            showLoading(true)
+//            viewModel.setSearchUsers(query)
+//        }
+//    }
     private fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = View.VISIBLE
