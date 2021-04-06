@@ -26,6 +26,7 @@ class DetailUserActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
+        supportActionBar?.title = username.toString()
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
 
@@ -34,9 +35,10 @@ class DetailUserActivity : AppCompatActivity() {
             if (it !=null){
                 binding.apply {
                     tvName.text = it.name
-                    tvUsername.text = it.login
-                    tvFollowers.text = "${it.followers} Followers"
-                    tvFollowing.text = "${it.following} Following"
+                    tvFollowers.text = "${it.followers}\nFollowers"
+                    tvFollowing.text = "${it.following}\nFollowing"
+                    tvLocation.text = it.location
+                    tvCompany.text = it.company
                     Glide.with(this@DetailUserActivity)
                         .load(it.avatar_url)
                         .transition(DrawableTransitionOptions.withCrossFade())

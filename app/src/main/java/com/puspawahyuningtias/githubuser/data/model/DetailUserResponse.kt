@@ -8,5 +8,7 @@ data class DetailUserResponse(
     val following_url: String,
     val name: String,
     val following: Int,
-    val followers: Int
+    val followers: Int,
+    val location: String,
+    val company: String
 )
