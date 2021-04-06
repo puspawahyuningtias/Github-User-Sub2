@@ -33,7 +33,7 @@ class FollowersViewModel : ViewModel(){
             })
     }
 
-    fun getLostFollowers(): LiveData<ArrayList<User>>{
+    fun getListFollowers(): LiveData<ArrayList<User>>{
         return listFollowers
     }
 }
